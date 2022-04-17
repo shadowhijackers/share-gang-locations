@@ -14,6 +14,7 @@ export const LocationsComponent = defineComponent({
         }
     },
     mounted(){
+       this.setupUser();
        this.initMap();
        this.wsService.connect();
        this.wsService.onOpen(()=>{
@@ -21,7 +22,6 @@ export const LocationsComponent = defineComponent({
            this.sendLocOnChange();
        });
        this.gangLocationsListener();
-
     },
     methods: {
         initMap(){
@@ -29,18 +29,28 @@ export const LocationsComponent = defineComponent({
         },
         gangLocationsListener(){
             this.wsService.onMessage((ev)=>{
-                const latlng = ev.data;
-                console.log("recived locations", latlng);
+                const gangLocationsStr = ev.data;
+                console.log("recived locations", gangLocationsStr);
                 this.osmService.clearMarkers();
-                this.osmService.setMarker(JSON.parse(latlng));
+                const gangLocations = JSON.parse(gangLocationsStr)
+                Object.entries(gangLocations).forEach(([userId, latlng])=>{
+                    this.osmService.setMarker(latlng, userId);
+                })
             })
         },
         sendLocOnChange(){
             this.locationService.onSuccess = (latlng)=>{
-                // alert(JSON.stringify(latlng))
-                this.wsService.send(latlng)
+                this.wsService.send({ userId: this.userId, latlng: latlng})
             }
             this.locationService.watchPosition();
+        },
+        setupUser(){
+            if (localStorage.getItem("userId")){
+                this.userId = localStorage.getItem("userId")
+            }else{
+                this.userId = Math.floor(Math.random()* 100000 + new Date().getTime()).toString()
+                localStorage.setItem("userId", this.userId);
+            }
         }
     },
     template: document.getElementById("locations")?.innerHTML ?? ''

@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/shadowhijackers/share-gang-locations/app/models"
 )
 
 type gang struct {
@@ -15,6 +16,7 @@ type gang struct {
 func (g *gang) reciveLocations() {
 	defer func() {
 		SocketHub.remove <- *g
+		models.RemovedUserLocation(g.gangId, g.conn.userId)
 		g.conn.ws.Close()
 	}()
 
@@ -29,6 +31,10 @@ func (g *gang) reciveLocations() {
 				log.Printf("error: %v", err)
 			}
 			break
+		}
+		models.AddOrUpdateUserLocation(g.gangId, msg.UserId, msg.Latlng)
+		if g.conn.userId == "" {
+			g.conn.userId = msg.UserId
 		}
 		m := &message{data: msg, gangId: g.gangId}
 		SocketHub.broadcast <- *m

@@ -6,7 +6,7 @@ import (
 
 type message struct {
 	gangId string
-	data   models.Latlng
+	data   userLocation
 }
 
 type hub struct {
@@ -29,7 +29,6 @@ func (h *hub) RemoveGang(g gang) {
 		if _, ok := connections[g.conn]; ok {
 			delete(connections, g.conn)
 			close(g.conn.send)
-
 			if len(connections) == 0 {
 				delete(h.gangs, g.gangId)
 			}
@@ -40,9 +39,10 @@ func (h *hub) RemoveGang(g gang) {
 func (h *hub) BroadCastLocations(m message) {
 	connections := h.gangs[m.gangId]
 	if connections != nil {
+		gl := models.GetGangLocations(m.gangId)
 		for c := range connections {
 			select {
-			case c.send <- m.data:
+			case c.send <- gl:
 			default:
 				g := gang{c, m.gangId}
 				h.RemoveGang(g)

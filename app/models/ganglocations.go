@@ -5,9 +5,6 @@ type Latlng struct {
 	Lng float64 `json:"lng"`
 }
 
-type userId string
-type gangId string
-
 /**
 *  SAMPLE DATA
 * ------------
@@ -17,4 +14,24 @@ type gangId string
 *	   }
 *  }
 **/
-var GANG_LOCATIONS_DB = make(map[gangId]map[userId]Latlng)
+var GANG_LOCATIONS_DB = make(map[string]map[string]Latlng)
+
+func AddOrUpdateUserLocation(gangId string, userId string, latlng Latlng) {
+	if GANG_LOCATIONS_DB[gangId] == nil {
+		GANG_LOCATIONS_DB[gangId] = make(map[string]Latlng)
+	}
+	GANG_LOCATIONS_DB[gangId][userId] = latlng
+}
+
+func RemovedUserLocation(gangId string, userId string) {
+	if GANG_LOCATIONS_DB[gangId] != nil {
+		delete(GANG_LOCATIONS_DB, gangId)
+		if len(GANG_LOCATIONS_DB[gangId]) == 0 {
+			delete(GANG_LOCATIONS_DB, gangId)
+		}
+	}
+}
+
+func GetGangLocations(gangId string) map[string]Latlng {
+	return GANG_LOCATIONS_DB[gangId]
+}

@@ -1,6 +1,7 @@
 package ws
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -22,6 +23,7 @@ var upgrader = websocket.Upgrader{
 }
 
 func ServeWS(c *gin.Context) {
+	fmt.Println(c.GetHeader("token"))
 	gangId := c.Param("gangId")
 
 	// connect to web socket
@@ -30,7 +32,7 @@ func ServeWS(c *gin.Context) {
 		log.Printf("error: %v", err)
 	}
 
-	conn := &connection{ws: wsconn, send: make(chan models.Latlng)}
+	conn := &connection{ws: wsconn, send: make(chan map[string]models.Latlng)}
 	g := &gang{conn: conn, gangId: gangId}
 
 	// adding new connection or new member
