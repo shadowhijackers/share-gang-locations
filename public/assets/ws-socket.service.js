@@ -9,7 +9,7 @@ export default class WsSocketService{
         if (window["WebSocket"]) {
             const params = window.location.href.split("/");
             const gangId = params[params.length - 2];
-            const url = "ws://" + document.location.host + "/ws/gangs/" + gangId + "/locations";
+            const url = "wss://" + document.location.host + "/ws/gangs/" + gangId + "/locations";
             console.log(url)
             this.conn = new WebSocket(url);
         }else{

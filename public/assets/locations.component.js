@@ -37,7 +37,7 @@ export const LocationsComponent = defineComponent({
         },
         sendLocOnChange(){
             this.locationService.onSuccess = (latlng)=>{
-                alert(JSON.stringify(latlng))
+                // alert(JSON.stringify(latlng))
                 this.wsService.send(latlng)
             }
             this.locationService.watchPosition();

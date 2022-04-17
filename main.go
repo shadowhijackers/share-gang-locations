@@ -15,6 +15,6 @@ func main() {
 
 	a := app.App{}
 	a.Initializer()
-	err := a.Router.Run(addr)
+	err := a.Router.RunTLS(addr, "server.crt", "server.key")
 	app.HandleError(err)
 }
