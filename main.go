@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var port int
-	flag.IntVar(&port, "port", 8080, "Specify the port to listen to.")
+	flag.IntVar(&port, "port", 8080, "Specify  the port to listen to.")
 	flag.Parse()
 	addr := fmt.Sprintf(":%d", port)
 
