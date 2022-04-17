@@ -20,7 +20,7 @@ func init() {
 
 func main() {
 	var port int
-	flag.IntVar(&port, "port", 8080, "Specify the port to listen to.")
+	flag.IntVar(&port, "port", 8080, "Specify  the port to listen to.")
 	flag.Parse()
 	// addr := fmt.Sprintf(":%d", ":" + os.Getenv("PORT"))
 	a := app.App{}
