@@ -16,7 +16,6 @@ type gang struct {
 func (g *gang) reciveLocations() {
 	defer func() {
 		SocketHub.remove <- *g
-		models.RemovedUserLocation(g.gangId, g.conn.userId)
 		g.conn.ws.Close()
 	}()
 

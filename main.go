@@ -7,10 +7,11 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/shadowhijackers/share-gang-locations/app"
+	"github.com/shadowhijackers/share-gang-locations/app/models"
 )
 
 func init() {
-
+	go models.RestoreDBFromBackUped()
 	err := godotenv.Load(".env")
 
 	if err != nil {
@@ -25,6 +26,8 @@ func main() {
 	// addr := fmt.Sprintf(":%d", ":" + os.Getenv("PORT"))
 	a := app.App{}
 	a.Initializer()
+	// for dev test
+	// err := a.Router.RunTLS(":"+os.Getenv("PORT"), "server.crt", "server.key")
 	err := a.Router.Run(":" + os.Getenv("PORT"))
 	app.HandleError(err)
 }
