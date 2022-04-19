@@ -27,7 +27,7 @@ func main() {
 	a := app.App{}
 	a.Initializer()
 	// for dev test
-	err := a.Router.RunTLS(":"+os.Getenv("PORT"), "server.crt", "server.key")
-	// err := a.Router.Run(":" + os.Getenv("PORT"))
+	// err := a.Router.RunTLS(":"+os.Getenv("PORT"), "server.crt", "server.key")
+	err := a.Router.Run(":" + os.Getenv("PORT"))
 	app.HandleError(err)
 }
