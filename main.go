@@ -20,14 +20,21 @@ func init() {
 }
 
 func main() {
-	var port int
-	flag.IntVar(&port, "port", 8080, "Specify  the port to listen to.")
+
+	var env string
+	flag.StringVar(&env, "env", "prod", "specify the environment")
 	flag.Parse()
-	// addr := fmt.Sprintf(":%d", ":" + os.Getenv("PORT"))
+
 	a := app.App{}
 	a.Initializer()
-	// for dev test
-	// err := a.Router.RunTLS(":"+os.Getenv("PORT"), "server.crt", "server.key")
-	err := a.Router.Run(":" + os.Getenv("PORT"))
+
+	var err error
+	if env == "dev" {
+		// for dev test
+		err = a.Router.RunTLS(":"+os.Getenv("PORT"), os.Getenv("CERT"), os.Getenv("KEY"))
+	} else {
+		err = a.Router.Run(":" + os.Getenv("PORT"))
+	}
+
 	app.HandleError(err)
 }

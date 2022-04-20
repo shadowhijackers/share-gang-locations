@@ -22,10 +22,10 @@ type Latlng struct {
 *  }
 **/
 var GANG_LOCATIONS_DB = make(map[string]map[string]Latlng)
+var m sync.Mutex
+var wg sync.WaitGroup
 
 func AddOrUpdateUserLocation(gangId string, userId string, latlng Latlng) {
-	var m sync.Mutex
-	var wg sync.WaitGroup
 	wg.Add(1)
 	if GANG_LOCATIONS_DB[gangId] == nil {
 		GANG_LOCATIONS_DB[gangId] = make(map[string]Latlng)
@@ -37,12 +37,15 @@ func AddOrUpdateUserLocation(gangId string, userId string, latlng Latlng) {
 
 // currently not using this func  due to persist the user data
 func RemovedUserLocation(gangId string, userId string) {
+	wg.Add(1)
 	if GANG_LOCATIONS_DB[gangId] != nil {
 		delete(GANG_LOCATIONS_DB, gangId)
 		if len(GANG_LOCATIONS_DB[gangId]) == 0 {
 			delete(GANG_LOCATIONS_DB, gangId)
 		}
 	}
+	go BackUpDB(&m, &wg)
+	wg.Wait()
 }
 
 func GetGangLocations(gangId string) map[string]Latlng {

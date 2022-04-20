@@ -7,7 +7,8 @@ import WsSocketService from "./ws-socket.service.js";
 export const LocationsComponent = defineComponent({
     data(){
         return {
-            title: "SHADOW HIJACKERS GANG LOCATIONS TRACKER",
+            title: "GANG LOCATIONS TRACKER",
+            wsStatus: "",
             logsData: "",
             osmService: new OSMService(),
             locationService: new LocationsService(),
@@ -25,23 +26,25 @@ export const LocationsComponent = defineComponent({
         },
         wsSocketListener(){
             this.wsService.onOpen = (()=>{
-                this.title = this.title.split(":")[0] + ":  HEYYYYY CONNECTED";
+                this.wsStatus = "CONNECTED";
                 this.sendLocOnChange();
             });
             this.wsService.closeHandler = ()=>{
-                this.title = this.title.split(":")[0] + ": OMG DISCONNECTED";
+                this.wsStatus = "DISCONNECTED";
             };
             this.wsService.onReconnect = ()=>{
-                this.title = this.title.split(":")[0] + ": RECONNECTING...";
+                this.wsStatus = "RECONNECTING";
             }
             this.wsService.onMessage = (ev)=>{
+                this.wsStatus = "CONNECTED";
                 const gangLocationsStr = ev.data;
                 console.log("recived locations", gangLocationsStr);
-                this.osmService.clearMarkers();
                 const gangLocations = JSON.parse(gangLocationsStr)
-                Object.entries(gangLocations).forEach(([userId, latlng])=>{
-                    this.osmService.setMarker(latlng, userId);
-                })
+                this.osmService.clearMarkers();
+                // Object.entries(gangLocations).forEach(([userId, latlng])=>{
+                //     this.osmService.setMarker(latlng, userId);
+                // })
+                this.osmService.setMarkers(gangLocations);
                 this.writeLogsOnview(gangLocations);
             }
             this.wsService.connect();
