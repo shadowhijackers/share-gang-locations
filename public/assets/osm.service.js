@@ -15,9 +15,9 @@ export default class OSMService {
                 id: 'mapbox/streets-v11',
                 tileSize: 512,
                 zoomOffset: -1,
-                zoomAnimation: false,
-                fadeAnimation:false,
-                markerZoomAnimation:false,
+                zoomAnimation: true,
+                fadeAnimation:true,
+                markerZoomAnimation:true,
                 sleep: true,
                 sleepTime: 750,
             }
