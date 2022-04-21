@@ -1,4 +1,4 @@
-## TRACK YOUR TEAM LOCATIONS IN SINGLE MAP LIVE
+## Share Gang locations
    Hi, Share Gang locations is a real time map based project 
 Which is used to track the team locations live in a single map.
 for example you friends are started to going for some party and
