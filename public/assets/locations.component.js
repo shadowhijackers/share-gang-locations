@@ -70,7 +70,7 @@ export const LocationsComponent = defineComponent({
         writeLogsOnview(gangLocations){
             this.logsData = "";
             Object.entries(gangLocations).forEach(([userId, latlng])=>{
-                this.logsData += `<li><strong>${userId}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address>`
+                this.logsData += `<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address>`
             })
         }
     },

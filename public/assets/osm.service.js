@@ -4,8 +4,9 @@ export default class OSMService {
         this.marker =  null;
         this.mapPopup = null;
         this.markers = [];
+        this.layerGroup = null;
         this.MAP = {
-            API: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+            API: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             CONFIG: {
                 maxZoom: 18,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -15,12 +16,15 @@ export default class OSMService {
                 tileSize: 512,
                 zoomOffset: -1,
                 zoomAnimation: false,
-                markerZoomAnimation: false
+                fadeAnimation:false,
+                markerZoomAnimation:false,
+                sleep: true,
+                sleepTime: 750,
             }
         }
     }
     initMap(){
-        this.mapIns= L.map('mapid').setView([13.0685, 80.2484], 13); // default view to chennai
+        this.mapIns= L.map('mapid').setView([13.0685, 80.2484], 5); // default view to chennai
         L.tileLayer(this.MAP.API, this.MAP.CONFIG).addTo(this.mapIns);
         this.mapPopup = L.popup();        
     }
@@ -29,7 +33,7 @@ export default class OSMService {
         this.marker = L.marker([+latlng.lat, +latlng.lng], {draggable:false, markerZoomAnimation: false, autoPanOnFocus	: false})
         var featureGroup = L.featureGroup([this.marker])
         .addTo(this.mapIns)
-        .bindPopup(userId).openPopup();
+        .bindPopup(userId,  {autoPan: false, autoClose: false}).openPopup();
         this.mapIns.fitBounds(featureGroup.getBounds())
     }
 
@@ -38,11 +42,11 @@ export default class OSMService {
       Object.entries(gangLocations).forEach(([userId, latlng])=>{
         const marker = L.marker([+latlng.lat, +latlng.lng])
         .addTo(this.mapIns)
-        .bindPopup(userId).openPopup();
+        .bindPopup(userId, {autoPan: false, autoClose: false}).openPopup();
         this.markers.push(marker);
       });
-      var featureGroup = L.featureGroup(this.markers).addTo(this.mapIns)
-      this.mapIns.fitBounds(featureGroup.getBounds())
+      this.layerGroup = L.layerGroup(this.markers).addTo(this.mapIns)
+    //   this.mapIns.fitBounds(featureGroup.getBounds())
     }
 
     clearMarkers(){
@@ -54,6 +58,10 @@ export default class OSMService {
             this.markers.forEach(m=>{
                 this.mapIns.removeLayer(m);
             })
+        }
+
+        if(this.layerGroup?.getLayers?.()?.length > 0){
+            this.layerGroup.clearLayers();
         }
 
         this.markers = [];
