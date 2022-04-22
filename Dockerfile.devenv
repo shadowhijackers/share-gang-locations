@@ -6,4 +6,4 @@ WORKDIR /app
 RUN chmod u+x scripts/build.sh
 RUN scripts/build.sh
 EXPOSE 8080
-CMD ["bin/share-gang-locations"]
+CMD ["bin/share-gang-locations", "-env", "dev"]
