@@ -12,7 +12,9 @@ import (
 )
 
 func init() {
-	go models.RestoreDBFromBackUped()
+	models.RestoreDBFromBackUped()
+	schedulers.StartDataCleaner()
+
 	err := godotenv.Load(".env")
 
 	if err != nil {
@@ -36,6 +38,5 @@ func main() {
 	} else {
 		err = a.Router.Run(":" + os.Getenv("PORT"))
 	}
-	go schedulers.StartDataCleaner()
 	app.HandleError(err)
 }
