@@ -8,6 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/shadowhijackers/share-gang-locations/app"
 	"github.com/shadowhijackers/share-gang-locations/app/models"
+	"github.com/shadowhijackers/share-gang-locations/app/schedulers"
 )
 
 func init() {
@@ -35,6 +36,6 @@ func main() {
 	} else {
 		err = a.Router.Run(":" + os.Getenv("PORT"))
 	}
-
+	go schedulers.StartDataCleaner()
 	app.HandleError(err)
 }

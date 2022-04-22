@@ -67,8 +67,6 @@ func BackUpDB(m *sync.Mutex, wg *sync.WaitGroup) {
 }
 
 func RestoreDBFromBackUped() {
-	var m sync.Mutex
-	m.Lock()
 	content, err := ioutil.ReadFile("backup.json")
 	if err != nil {
 		log.Fatal(err)
@@ -77,6 +75,16 @@ func RestoreDBFromBackUped() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	m.Unlock()
+}
 
+func CleanAllData() {
+	GANG_LOCATIONS_DB = make(map[string]map[string]Latlng)
+	content, err := json.Marshal(GANG_LOCATIONS_DB)
+	if err != nil {
+		log.Println(err)
+	}
+	err = ioutil.WriteFile("backup.json", content, 644)
+	if err != nil {
+		log.Println(err)
+	}
 }
