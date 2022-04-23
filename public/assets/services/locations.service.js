@@ -1,7 +1,8 @@
 export default class LocationsService {
   constructor() {
     this.watcherId = '';
-    this.locationsWorker = new Worker('/assets/locations-worker.js');
+    this.locationsWorker = new Worker('/assets/services/locations-worker.js');
+    console.log(this.locationsWorker)
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by this browser.");
     }
@@ -22,6 +23,7 @@ export default class LocationsService {
   }
 
   watchPosition() {
+    console.log(this.locationsWorker)
     this.locationsWorker.onmessage = (canTrigger) => {
       navigator.geolocation.getCurrentPosition(this._successCallBack,
         this._errorCallBack,

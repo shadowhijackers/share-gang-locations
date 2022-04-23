@@ -1,8 +1,8 @@
-import html from './html.js';
+import html from '../html.js';
 
-import OSMService from "./osm.service.js";
-import LocationsService from "./locations.service.js";
-import WsSocketService from "./ws-socket.service.js";
+import OSMService from "../services/osm.service.js";
+import LocationsService from "../services/locations.service.js";
+import WsSocketService from "../services/ws-socket.service.js";
 
 export default {
     name: "LocaitonsComponent",

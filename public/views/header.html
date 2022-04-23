@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""></script> 
-      <script src="/assets/main.js" type="module"></script>
+    <script src="/assets/main.js" type="module"></script>
     <!--
       To prevent waterfall-loading, we preload
       all the JS Module files of our application.
+      vue 3 lib & htm
     -->
-    <link rel="modulepreload" href="https://unpkg.com/vue@3.0.4/dist/vue.runtime.esm-browser.js">
-    <link rel="modulepreload" href="https://unpkg.com/htm@3.0.4/dist/htm.module.js?module">
-    <link rel="modulepreload" href="/assets/app.js">
-    <link rel="modulepreload" href="/assets/home.component.js">
-    <link rel="modulepreload" href="/assets/locations.component.js">
+    <link rel="modulepreload" href="/assets/vendors/vue.runtime.esm-browser.js">
+    <link rel="modulepreload" href="/assets/vendors/htm.module.js?module">
+    <link rel="modulepreload" href="/assets/components/app.js">
+    <link rel="modulepreload" href="/assets/components/home.component.js">
+    <link rel="modulepreload" href="/assets/components/locations.component.js">
     <link rel="modulepreload" href="/assets/html.js">
 </head>
 <body>
