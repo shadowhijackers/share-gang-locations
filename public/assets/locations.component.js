@@ -1,10 +1,11 @@
-import {defineComponent} from "vue";
+import html from './html.js';
 
 import OSMService from "./osm.service.js";
 import LocationsService from "./locations.service.js";
 import WsSocketService from "./ws-socket.service.js";
 
-export const LocationsComponent = defineComponent({
+export default {
+    name: "LocaitonsComponent",
     data(){
         return {
             title: "GANG LOCATIONS TRACKER",
@@ -12,7 +13,8 @@ export const LocationsComponent = defineComponent({
             logsData: "",
             osmService: new OSMService(),
             locationService: new LocationsService(),
-            wsService: new WsSocketService()
+            wsService: new WsSocketService(),
+            gangLocations: {}
         }
     },
     mounted(){
@@ -69,14 +71,22 @@ export const LocationsComponent = defineComponent({
         },
         writeLogsOnview(gangLocations){
             this.logsData = "";
-            Object.entries(gangLocations).forEach(([userId, latlng])=>{
-                this.logsData += `<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address>`
-            })
+            this.gangLocations = gangLocations;
         }
     },
-    template: document.getElementById("locations")?.innerHTML ?? ''
-})
-
-export default {
-    LocationsComponent
+    render() {
+        return html`
+        <div>
+          <h2>${this.title}</h2>
+          <h4>CONNECTION STATUS:  <b>${this.wsStatus}</b></h4>
+          <div id="mapid" style="width: 98%; height: 400px;margin: 0 auto;"></div>
+          <h3>Gang Info</h3>
+          <ul> ${
+            Object.entries(this.gangLocations).map(([userId, latlng])=>{
+                return html`<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address>`
+            })
+          }</ul>
+        </div>
+        `
+    },
 }

@@ -1,11 +1,19 @@
-import {HomeComponent} from "./home.component.js"
-import {LocationsComponent} from "./locations.component.js"
+import HomeComponent from "./home.component.js"
+import LocaitonsComponent from "./locations.component.js"
+import html from './html.js';
 
 export default {
+  name: 'App',
   el: '#app',
-  components: {
-    HomeComponent,
-    LocationsComponent
+  data() {
+    return {
+      count: 0,
+    };
   },
-  setup() {}
+  render() {
+    return html`
+    <${HomeComponent}></${HomeComponent}>
+    <${LocaitonsComponent}></${LocaitonsComponent}>
+    `
+  },
 }
