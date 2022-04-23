@@ -5,6 +5,12 @@ for example you friends are started to going for some party and
 you have to track everyone live in single map then you can use
 this application.
 
+## Techstack
+   Application developed in Go, Gin, Gorila Websocket, Vue js 3 with minimalistic
+ to write vue render code you have to follow `https://github.com/developit/htm ` 
+ hypertext tagged markeup which used to write jsx code in js itself without 
+ any transpiller.
+  
 ## RUN 
 
 Run this application by following command in local environment
