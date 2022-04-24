@@ -83,7 +83,7 @@ export default {
           <h3>Gang Info</h3>
           <ul> ${
             Object.entries(this.gangLocations).map(([userId, latlng])=>{
-                return html`<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address>`
+                return html`<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address></li>`
             })
           }</ul>
         </div>

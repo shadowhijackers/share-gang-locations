@@ -1,2 +1,4 @@
 # dependencies
 /public/node_modules
+.github/
+.git

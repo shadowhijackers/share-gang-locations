@@ -1,4 +1,19 @@
+@import "reset";
 @import "theme";
 @import "typography";
 @import "base";
 @import "components/components";
+
+.app{
+    &-header{
+        @extend .primary-bg;
+        padding: 1em;
+
+        &__title{
+            text-align: center;
+        }
+        &__sub-title{
+            text-align: right;
+        }
+    }
+}

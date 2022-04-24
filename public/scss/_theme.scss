@@ -1,15 +1,8 @@
 :root {
-    --primary: #ea4235;
-    --primary-dark: #e94637;
-    --secondary-black: #000000;
-    --secondary-light-grey: #ededed;
-    --secondary-dark-grey: #131313;
-    --secondary-dark-grey2: #8a8a8a;
-    --secondary-grey1: #f5f5f5;
-    --secondary-grey2: #dfdedd;
-    --secondary-white: #fff;
-    --text-color: #292929;
-    --text-color-inverted: #fff;
+    --primary: #0B0A0A;
+    --primary-dark: #0B0A0A;
+    --text-color: #FCFBFB;
+    --text-color-inverted: #0B0A0A;
     --grey: #ededed;
   }
   
@@ -19,5 +12,5 @@
   
   .primary-bg {
     background: var(--primary);
-    color: var(--text-color-inverted);
+    color: var(--text-color);
   }
