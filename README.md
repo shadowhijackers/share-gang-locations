@@ -11,10 +11,13 @@ this application.
  hypertext tagged markeup which used to write jsx code in js itself without 
  any transpiller.
   
-## RUN 
+## RUN SERVER
 
 Run this application by following command in local environment
 > go run main.go -env dev
+
+## RUN UI
+> cd public; npm run scss-watch
 
 Docker 
 > docker build -t share-gang-locations -f Dockerfile.devenv $GO_PATH/share-gang-locations
