@@ -1,0 +1,16 @@
+{
+  "name": "share-gang-locations-ui",
+  "version": "1.0.0",
+  "description": "This npm project only for converting scss into css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass scss/app.scss -o assets/css",
+    "scss-watch": "node-sass --watch scss -o assets/css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

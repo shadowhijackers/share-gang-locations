@@ -1,0 +1,50 @@
+$breakpoints: (
+  xs: (begin: 0, end: 576px),
+  sm: (begin: 576px, end: 768px),
+  md: (begin: 768px, end: 992px),
+  lg: (begin: 992px, end: 1200px),
+  xl: (begin: 1200px, end: 1400px),
+);
+
+$breakpoints-gt: (
+  sm-gt: 576px,
+  md-gt: 768px,
+  lg-gt: 992px,
+  xl-gt: 1200px,
+  xxl-gt: 1400px
+);
+
+$breakpoints-lt: (
+  sm-lt: 575.98px,
+  md-lt: 768.98px,
+  lg-lt: 991.98px,
+  xl-lt: 1199.98px,
+);
+
+$gutter: 4rem;
+$gutter-xs: 1rem;
+$font-family: 'Open Sans', sans-serif;
+
+@mixin media-breakpoint($bp) {
+  @if map-has-key($breakpoints, $bp) {
+    $min: map-get(map-get($breakpoints, $bp), begin);
+    $max: map-get(map-get($breakpoints, $bp), end);
+    @media only screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($breakpoints-gt, $bp){
+    $min: map-get($breakpoints-gt, $bp);
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  }
+
+  @else if map-has-key($breakpoints-lt, $bp){
+    $max: map-get($breakpoints-lt, $bp);
+    @media only screen and (max-width: $max) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+:root {
+  --primary: #ea4235;
+  --primary-dark: #e94637;
+  --secondary-black: #000000;
+  --secondary-light-grey: #ededed;
+  --secondary-dark-grey: #131313;
+  --secondary-dark-grey2: #8a8a8a;
+  --secondary-grey1: #f5f5f5;
+  --secondary-grey2: #dfdedd;
+  --secondary-white: #fff;
+  --text-color: #292929;
+  --text-color-inverted: #fff;
+  --grey: #ededed; }
+
+.primary {
+  color: var(--primary); }
+
+.primary-bg {
+  background: var(--primary);
+  color: var(--text-color-inverted); }
+
+html {
+  font-size: 15px; }
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: bold;
+  letter-spacing: .4px; }
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: bold; }
+
+h3 {
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-weight: bold; }
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: bold; }
+
+p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-align: justify; }
+
+.container {
+  max-width: 1200px; }
+
+.home-component {
+  font-size: 1rem; }
+
+.locations-component {
+  font-size: 1rem; }
