@@ -72,21 +72,38 @@ export default {
         writeLogsOnview(gangLocations){
             this.logsData = "";
             this.gangLocations = gangLocations;
+        },
+        shareTrackerLink(){
+            const URL = location.href;
+            window.open(URL, "_blank");
         }
     },
     render() {
         return html`
-        <div>
-          <h2>${this.title}</h2>
-          <h4>CONNECTION STATUS:  <b>${this.wsStatus}</b></h4>
-          <div id="mapid" style="width: 98%; height: 400px;margin: 0 auto;"></div>
-          <h3>Gang Info</h3>
-          <ul> ${
-            Object.entries(this.gangLocations).map(([userId, latlng])=>{
+      <main class="container c-locations">
+        <header class="app-header primary-bg">
+           <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
+           <h5 class="app-header__sub-title">© SHADOW HIJACKERS</h5> 
+        </header>
+        
+        <section class="c-locations__map-container">
+          <div id="mapid"></div>
+        </section>
+
+        <footer class="app-footer">
+          <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">SHARE TRACKER LINK</button>
+        </footer>
+
+        <div style="display: none">
+          <ul> 
+           ${
+              Object.entries(this.gangLocations).map(([userId, latlng])=>{
                 return html`<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address></li>`
-            })
-          }</ul>
-        </div>
+              })
+            }
+          </ul>
+        </div>  
+      </main>
         `
     },
 }

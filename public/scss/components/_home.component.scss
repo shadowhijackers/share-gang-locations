@@ -1,10 +1,14 @@
-.c-home{
-    font-size: 1rem;
-    &__map-container{
-        #mapid{
-          width: 98%; 
-          height: 400px;
-          margin: 0 auto;
-        }
+.c-home {
+  font-size: 1rem;
+  &__map-container {
+    margin-top: 75px;
+    overflow-y: auto;
+    height: calc(100vh - 130px);
+
+    #mapid {
+      width: 98%;
+      height: 100%;
+      margin: 0 auto;
     }
+  }
 }

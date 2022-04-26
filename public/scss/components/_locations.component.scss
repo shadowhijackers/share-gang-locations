@@ -1,3 +1,15 @@
-.locations-component{
+.c-locations {
     font-size: 1rem;
-}
+    &__map-container {
+      margin-top: 75px;
+      overflow-y: auto;
+      height: calc(100vh - 130px);
+  
+      #mapid {
+        width: 98%;
+        height: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+  

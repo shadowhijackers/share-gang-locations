@@ -251,7 +251,7 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type=search] {
+input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -334,7 +334,7 @@ textarea {
 .primary {
   color: var(--primary); }
 
-.primary-bg, .app-header {
+.primary-bg {
   background: var(--primary);
   color: var(--text-color); }
 
@@ -372,17 +372,46 @@ p {
 
 .c-home {
   font-size: 1rem; }
-  .c-home__map-container #mapid {
-    width: 98%;
-    height: 400px;
-    margin: 0 auto; }
+  .c-home__map-container {
+    margin-top: 75px;
+    overflow-y: auto;
+    height: calc(100vh - 130px); }
+    .c-home__map-container #mapid {
+      width: 98%;
+      height: 100%;
+      margin: 0 auto; }
 
-.locations-component {
+.c-locations {
   font-size: 1rem; }
+  .c-locations__map-container {
+    margin-top: 75px;
+    overflow-y: auto;
+    height: calc(100vh - 130px); }
+    .c-locations__map-container #mapid {
+      width: 98%;
+      height: 100%;
+      margin: 0 auto; }
 
 .app-header {
-  padding: 1em; }
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 3px 5px -1px #566e74, 0 6px 10px #53d5fb, 0 1px 18px #aad3df;
+  z-index: 2;
+  max-width: 1200px; }
   .app-header__title {
     text-align: center; }
   .app-header__sub-title {
-    text-align: right; }
+    text-align: center; }
+
+.app-footer__btn {
+  height: 54px;
+  width: 100%;
+  background: #000;
+  color: white;
+  border: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.5rem; }

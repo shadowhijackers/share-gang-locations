@@ -22,7 +22,7 @@ export default {
     return html`
         <main class="container c-home">
           <header class="app-header primary-bg">
-             <h3 class="app-header__title">SHARE GANG LOCATIONS</h3>
+             <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
              <h5 class="app-header__sub-title">© SHADOW HIJACKERS</h5> 
           </header>
           

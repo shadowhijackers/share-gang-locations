@@ -6,14 +6,32 @@
 
 .app{
     &-header{
-        @extend .primary-bg;
-        padding: 1em;
-
+        padding: 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 3px 5px -1px #566e74, 0 6px 10px #53d5fb, 0 1px 18px #aad3df;
+        z-index: 2;
+        max-width: 1200px;
         &__title{
             text-align: center;
         }
         &__sub-title{
-            text-align: right;
+            text-align: center;
+        }
+    }
+
+    &-footer{
+        &__btn{
+            height: 54px;
+            width: 100%;
+            background: #000;
+            color: white;
+            border: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
         }
     }
 }
