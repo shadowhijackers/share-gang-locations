@@ -27,6 +27,6 @@ Test with https://localhost:8080
 
 ## APP LINK
 
-[REMOTE](https://limitless-gorge-68550.herokuapp.com)
+[LIVE TEST]( https://share-gang-locations.herokuapp.com)
 
 > SUPPORTED ONLY CHROME BROWSER
