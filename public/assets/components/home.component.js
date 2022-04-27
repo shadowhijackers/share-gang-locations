@@ -6,7 +6,7 @@ export default {
   data(){
     return {
       osmService: new OSMService(),
-      uniqueId: (Math.floor(Math.random() * 10000000)).toString(16)
+      uniqueId: (Math.floor(Math.random() * 10000000)).toString(16),
     }
   },
   mounted() {
@@ -14,10 +14,8 @@ export default {
   },
   methods: {
     shareTrackerLink(){
-     const URL = `/gangs/${this.uniqueId}/locations`;
-     navigator.clipboard.writeText(URL);
-
-     alert("Copied link");
+     const URL = `${location.origin}/gangs/${this.uniqueId}/locations`;
+     location.href = URL
     }
   },
   render() {
@@ -34,8 +32,8 @@ export default {
 
           <footer class="app-footer">
             <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">            
-            <i class="icon icon-share" />
-            SHARE TRACKER LINK</button>
+            <i class="icon icon-play" />
+            <span>START SHARING</span></button>
           </footer>
         </main>
     `;

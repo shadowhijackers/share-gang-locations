@@ -3,6 +3,7 @@ import html from '../html.js';
 import OSMService from "../services/osm.service.js";
 import LocationsService from "../services/locations.service.js";
 import WsSocketService from "../services/ws-socket.service.js";
+import AlertService from '../services/alert.service.js';
 
 export default {
     name: "LocaitonsComponent",
@@ -11,16 +12,19 @@ export default {
             title: "GANG LOCATIONS TRACKER",
             wsStatus: "",
             logsData: "",
+            uniqueId: "",
+            gangLocations: {},
             osmService: new OSMService(),
             locationService: new LocationsService(),
             wsService: new WsSocketService(),
-            gangLocations: {}
+            alertService: new AlertService()
         }
     },
     mounted(){
        this.setupUser();
        this.initMap();
        this.wsSocketListener();
+       this.uniqueId = location.href.split("/")[location.href.split("/").length-2]
     },
     methods: {
         initMap(){
@@ -74,9 +78,12 @@ export default {
             this.gangLocations = gangLocations;
         },
         shareTrackerLink(){
-            const URL = location.href;
-            navigator.clipboard.writeText(URL);
-            alert("Copied link");     
+            const URL = `${location.origin}/gangs/${this.uniqueId}/locations`;
+            navigator.clipboard.writeText(URL).then(()=>{
+                this.alertService.show("Copied link");
+            }).catch(()=>{
+                this.alertService.show("Something went wrong! copy URL from browser");
+            });
         }
     },
     render() {
@@ -92,7 +99,10 @@ export default {
         </section>
 
         <footer class="app-footer">
-          <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">SHARE TRACKER LINK</button>
+          <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">
+            <i class="icon icon-play" />
+            <span>SHARE TRACKER LINK</span>
+          </button>
         </footer>
 
         <div style="display: none">

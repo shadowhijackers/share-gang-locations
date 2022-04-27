@@ -374,8 +374,8 @@ p {
   -webkit-mask-size: cover;
   mask-size: cover;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 1.2rem;
+  height: 1.5rem;
   background: #fff;
   margin: 0 .5rem; }
 
@@ -386,6 +386,10 @@ p {
 .icon-share {
   -webkit-mask-image: url("/assets/icons/share-nodes-solid.svg");
   mask-image: url("/assets/icons/share-nodes-solid.svg"); }
+
+.icon-play {
+  -webkit-mask-image: url("/assets/icons/play-solid.svg");
+  mask-image: url("/assets/icons/play-solid.svg"); }
 
 .c-home {
   font-size: 1rem; }

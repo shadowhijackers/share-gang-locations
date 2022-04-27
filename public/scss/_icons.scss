@@ -8,8 +8,8 @@
     -webkit-mask-size: cover;
     mask-size: cover;
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 1.2rem;
+    height: 1.5rem;
     background: #fff;
     margin: 0 .5rem;
   }
@@ -17,6 +17,7 @@
   $icons: (
     "search-locations": "/assets/icons/magnifying-glass-location-solid.svg",
     "share": "/assets/icons/share-nodes-solid.svg",
+    "play": "/assets/icons/play-solid.svg",
   );
   
   @each $name, $path in $icons {
