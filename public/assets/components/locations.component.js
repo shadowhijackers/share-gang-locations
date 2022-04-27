@@ -14,6 +14,7 @@ export default {
             logsData: "",
             uniqueId: "",
             gangLocations: {},
+            showGangInfo: false,
             osmService: new OSMService(),
             locationService: new LocationsService(),
             wsService: new WsSocketService(),
@@ -69,7 +70,7 @@ export default {
             if (localStorage.getItem("userId")){
                 this.userId = localStorage.getItem("userId")
             }else{
-                this.userId = Math.floor(Math.random()* 100000 + new Date().getTime()).toString()
+                this.userId = Math.floor(Math.random()* 100000 + new Date().getTime()).toString(16)
                 localStorage.setItem("userId", this.userId);
             }
         },
@@ -84,6 +85,10 @@ export default {
             }).catch(()=>{
                 this.alertService.show("Something went wrong! copy URL from browser");
             });
+        },
+        fitBoundGangInMap(){
+            this.showGangInfo = true;
+            this.osmService.fitBounds();
         }
     },
     render() {
@@ -95,17 +100,21 @@ export default {
         </header>
         
         <section class="c-locations__map-container">
+          <div class="c-locations__locate-people" onClick=${()=>{this.fitBoundGangInMap()}}>
+            <i class="icon icon-search-locations" />
+          </div>
           <div id="mapid"></div>
         </section>
 
         <footer class="app-footer">
           <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">
-            <i class="icon icon-play" />
+            <i class="icon icon-share" />
             <span>SHARE TRACKER LINK</span>
           </button>
         </footer>
 
-        <div style="display: none">
+        <div style="display: ${this.showGangInfo? 'block': 'none'}" class="c-locations__gang-info">
+          <div><button onClick=${()=>{this.showGangInfo = false}}>close</button></div>
           <ul> 
            ${
               Object.entries(this.gangLocations).map(([userId, latlng])=>{

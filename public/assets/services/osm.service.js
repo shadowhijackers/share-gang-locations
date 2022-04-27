@@ -49,6 +49,15 @@ export default class OSMService {
     //   this.mapIns.fitBounds(featureGroup.getBounds())
     }
 
+    async fitBounds(){
+        let featureGroup = L.featureGroup(this.markers).addTo(this.mapIns)
+        this.mapIns.fitBounds(featureGroup.getBounds())
+        // sleep for 5s
+        await new Promise((res, rej)=>{
+            setTimeout(()=>{res(true)}, 5000)
+        })
+    }
+
     clearMarkers(){
         if (!!this.marker){
             this.mapIns.removeLayer(this.marker);

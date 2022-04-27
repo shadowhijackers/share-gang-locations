@@ -18,6 +18,8 @@
     "search-locations": "/assets/icons/magnifying-glass-location-solid.svg",
     "share": "/assets/icons/share-nodes-solid.svg",
     "play": "/assets/icons/play-solid.svg",
+    "arrow-up": "/assets/icons/circle-arrow-up-solid",
+    "close": "/assets/icons/circle-xmark-solid"
   );
   
   @each $name, $path in $icons {

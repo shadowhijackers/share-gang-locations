@@ -13,5 +13,42 @@
         margin: 0 auto;
       }
     }
+
+    &__locate-people {
+      background: var(--primary);
+      position: absolute;
+      right: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 4rem;
+      height: 4rem;
+      z-index: 999;
+      color: #fff;
+      top: 1rem;
+      box-shadow: 0 3px 5px -1px #566e74, 0 6px 10px #53d5fb, 0 1px 18px #aad3df;
+      transition: all 400ms;
+    }
+
+    &__gang-info{
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background: var(--primary);
+      height: 178px;
+      overflow-y: auto;
+      button{
+        float: right;
+      }
+      ul{
+        clear: both;
+        padding: 1rem;
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+    }
   }
   
