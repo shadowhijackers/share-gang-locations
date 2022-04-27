@@ -15,7 +15,9 @@ export default {
   methods: {
     shareTrackerLink(){
      const URL = `/gangs/${this.uniqueId}/locations`;
-     window.open(URL, "_blank");
+     navigator.clipboard.writeText(URL);
+
+     alert("Copied link");
     }
   },
   render() {
@@ -23,7 +25,7 @@ export default {
         <main class="container c-home">
           <header class="app-header primary-bg">
              <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
-             <h5 class="app-header__sub-title">© SHADOW HIJACKERS</h5> 
+             <h4 class="app-header__sub-title">© SHADOW HIJACKERS</h4> 
           </header>
           
           <section class="c-home__map-container">
@@ -31,7 +33,9 @@ export default {
           </section>
 
           <footer class="app-footer">
-            <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">SHARE TRACKER LINK</button>
+            <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">            
+            <i class="icon icon-share" />
+            SHARE TRACKER LINK</button>
           </footer>
         </main>
     `;

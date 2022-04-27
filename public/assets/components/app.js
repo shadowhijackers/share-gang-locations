@@ -9,7 +9,7 @@ export default {
 
     return {
       count: 0,
-      isLocationsPage: location.href.includes("locations")
+      isLocationsPage: location.href.split("/")[location.href.split("/").length-1].includes("locations")
     };
   },
   render() {

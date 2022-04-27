@@ -1,0 +1,26 @@
+  
+@mixin addIcon($svgPath) {
+    -webkit-mask-image: url($svgPath);
+    mask-image: url($svgPath);
+  }
+  
+  .icon {
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    margin: 0 .5rem;
+  }
+  
+  $icons: (
+    "search-locations": "/assets/icons/magnifying-glass-location-solid.svg",
+    "share": "/assets/icons/share-nodes-solid.svg",
+  );
+  
+  @each $name, $path in $icons {
+    .icon-#{$name} {
+      @include addIcon($path);
+    }
+  }

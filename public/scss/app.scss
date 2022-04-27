@@ -2,12 +2,13 @@
 @import "theme";
 @import "typography";
 @import "base";
+@import "icons";
 @import "components/components";
 
 .app{
     &-header{
         padding: 1rem;
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
@@ -23,8 +24,13 @@
     }
 
     &-footer{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
         &__btn{
-            height: 54px;
+            height: 4.5rem;
             width: 100%;
             background: #000;
             color: white;
@@ -32,6 +38,9 @@
             font-weight: 700;
             font-size: 1.2rem;
             line-height: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

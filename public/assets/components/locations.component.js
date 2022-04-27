@@ -75,7 +75,8 @@ export default {
         },
         shareTrackerLink(){
             const URL = location.href;
-            window.open(URL, "_blank");
+            navigator.clipboard.writeText(URL);
+            alert("Copied link");     
         }
     },
     render() {
@@ -83,7 +84,7 @@ export default {
       <main class="container c-locations">
         <header class="app-header primary-bg">
            <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
-           <h5 class="app-header__sub-title">© SHADOW HIJACKERS</h5> 
+           <h4 class="app-header__sub-title">© SHADOW HIJACKERS</h4> 
         </header>
         
         <section class="c-locations__map-container">

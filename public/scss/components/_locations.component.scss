@@ -1,9 +1,11 @@
 .c-locations {
     font-size: 1rem;
     &__map-container {
-      margin-top: 75px;
-      overflow-y: auto;
-      height: calc(100vh - 130px);
+      position: absolute;
+      top: 5.25rem;
+      left: 0;
+      right: 0;
+      bottom: 4.5rem;
   
       #mapid {
         width: 98%;

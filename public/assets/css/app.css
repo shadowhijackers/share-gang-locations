@@ -370,12 +370,31 @@ p {
 .container {
   max-width: 1200px; }
 
+.icon {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  margin: 0 .5rem; }
+
+.icon-search-locations {
+  -webkit-mask-image: url("/assets/icons/magnifying-glass-location-solid.svg");
+  mask-image: url("/assets/icons/magnifying-glass-location-solid.svg"); }
+
+.icon-share {
+  -webkit-mask-image: url("/assets/icons/share-nodes-solid.svg");
+  mask-image: url("/assets/icons/share-nodes-solid.svg"); }
+
 .c-home {
   font-size: 1rem; }
   .c-home__map-container {
-    margin-top: 75px;
-    overflow-y: auto;
-    height: calc(100vh - 130px); }
+    position: absolute;
+    top: 5.25rem;
+    left: 0;
+    right: 0;
+    bottom: 4.5rem; }
     .c-home__map-container #mapid {
       width: 98%;
       height: 100%;
@@ -384,9 +403,11 @@ p {
 .c-locations {
   font-size: 1rem; }
   .c-locations__map-container {
-    margin-top: 75px;
-    overflow-y: auto;
-    height: calc(100vh - 130px); }
+    position: absolute;
+    top: 5.25rem;
+    left: 0;
+    right: 0;
+    bottom: 4.5rem; }
     .c-locations__map-container #mapid {
       width: 98%;
       height: 100%;
@@ -394,7 +415,7 @@ p {
 
 .app-header {
   padding: 1rem;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -406,12 +427,21 @@ p {
   .app-header__sub-title {
     text-align: center; }
 
-.app-footer__btn {
-  height: 54px;
-  width: 100%;
-  background: #000;
-  color: white;
-  border: 0;
-  font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 1.5rem; }
+.app-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; }
+  .app-footer__btn {
+    height: 4.5rem;
+    width: 100%;
+    background: #000;
+    color: white;
+    border: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
