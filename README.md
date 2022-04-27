@@ -29,4 +29,4 @@ Test with https://localhost:8080
 
 [LIVE TEST]( https://share-gang-locations.herokuapp.com)
 
-> SUPPORTED ONLY CHROME BROWSER
+> Try with latest version of browsers
