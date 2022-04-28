@@ -27,3 +27,8 @@
       @include addIcon($path);
     }
   }
+
+  .material-icons{
+    padding: 0 .5rem;
+    font-size: 2rem !important;
+  }

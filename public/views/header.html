@@ -4,6 +4,9 @@
     <title>SHARE GANG LOCATIONS</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="assets/icons/icon-72x72.png" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+    <link rel="manifest" href="/assets/manifest.json">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/app.css"/>
@@ -19,6 +22,18 @@
     <link rel="modulepreload" href="/assets/components/home.component.js">
     <link rel="modulepreload" href="/assets/components/locations.component.js">
     <link rel="modulepreload" href="/assets/html.js">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript">
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("/assets/service-worker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err));
+     });
+    }
+    </script>
 </head>
-<body>
+<body style="font-family: 'Open Sans', sans-serif">
 <?go end ?>

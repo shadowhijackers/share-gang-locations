@@ -1,0 +1,18 @@
+{
+    "short_name": "Share Gang Locations",
+    "name": "Share Gang Locations",
+    "icons": [
+        {
+            "src": "/assets/icons/icon-72x72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        }
+    ],
+    "background_color": "#000",
+    "display": "standalone",
+    "theme_color": "#000",
+    "description": "Authless location share among with your gang",
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "orientation": "portrait"
+}

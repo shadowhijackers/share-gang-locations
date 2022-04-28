@@ -20,7 +20,7 @@ export default {
   },
   render() {
     return html`
-        <main class="container c-home">
+        <main class="c-home">
           <header class="app-header primary-bg">
              <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
              <h4 class="app-header__sub-title">© SHADOW HIJACKERS</h4> 

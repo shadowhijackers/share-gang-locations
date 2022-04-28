@@ -3,6 +3,7 @@
 @import "typography";
 @import "base";
 @import "icons";
+@import "utils";
 @import "components/components";
 
 .app{
@@ -14,7 +15,6 @@
         right: 0;
         box-shadow: 0 3px 5px -1px #566e74, 0 6px 10px #53d5fb, 0 1px 18px #aad3df;
         z-index: 2;
-        max-width: 1200px;
         &__title{
             text-align: center;
         }

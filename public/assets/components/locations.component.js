@@ -93,7 +93,7 @@ export default {
     },
     render() {
         return html`
-      <main class="container c-locations">
+      <main class="c-locations">
         <header class="app-header primary-bg">
            <h2 class="app-header__title">SHARE GANG LOCATIONS</h2>
            <h4 class="app-header__sub-title">© SHADOW HIJACKERS</h4> 
@@ -101,24 +101,27 @@ export default {
         
         <section class="c-locations__map-container">
           <div class="c-locations__locate-people" onClick=${()=>{this.fitBoundGangInMap()}}>
-            <i class="icon icon-search-locations" />
+            <span class="material-icons">not_listed_location</span>          
           </div>
           <div id="mapid"></div>
         </section>
 
         <footer class="app-footer">
           <button onClick=${()=>{this.shareTrackerLink()}} class="app-footer__btn">
-            <i class="icon icon-share" />
+          <span class="material-icons md-18">share</span>
             <span>SHARE TRACKER LINK</span>
           </button>
         </footer>
 
-        <div style="display: ${this.showGangInfo? 'block': 'none'}" class="c-locations__gang-info">
-          <div><button onClick=${()=>{this.showGangInfo = false}}>close</button></div>
+        <div style="display: ${this.showGangInfo? 'block': 'none'}" class="c-locations__gang-info txt-color">
+          <div class="flex flex-space-between flex-align-center">
+            <h3>GANG INFO</h3>
+            <div><span onClick=${()=>{this.showGangInfo = false}} class="material-icons">highlight_off</span></div>
+          </div>
           <ul> 
            ${
               Object.entries(this.gangLocations).map(([userId, latlng])=>{
-                return html`<li><strong>${userId} ${ this.userId == userId? "(YOU)":""}</strong>:<address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address></li>`
+                return html`<li><h3>${userId} ${ this.userId == userId? "(YOU)":""}</h3><address>LAT ${latlng.lat}, LNG: ${latlng.lng}</address></li>`
               })
             }
           </ul>
